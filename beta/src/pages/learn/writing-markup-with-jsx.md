@@ -104,7 +104,7 @@ JSX는 HTML보다 더 엄격하고 규칙이 조금 더 있기 때문입니다! 
 
 ## JSX 작성 규칙 {/*the-rules-of-jsx*/}
 
-### 1. 하나의 루트(root) 요소를 반환하세요 {/*1-return-a-single-root-element*/}
+### 1. 하나의 루트(root) 엘리먼트(Element)를 반환하세요 {/*1-return-a-single-root-element*/}
 
 하나의 컴포넌트에서 두 개 이상의 엘리먼트(element)를 반환하기 위해서는 **하나의 부모 태그로 감싸주세요**.
 
@@ -141,7 +141,7 @@ JSX는 HTML보다 더 엄격하고 규칙이 조금 더 있기 때문입니다! 
 </>
 ```
 
-이 빈 태그는 *[React fragment](TODO)*로 불립니다. React fragments는 브라우저 HTML 트리에 흔적을 남기지 않고 HTML 요소들을 그룹화해줍니다.
+이 빈 태그는 *[React fragment](TODO)*로 불립니다. React fragments는 브라우저 HTML 트리에 흔적을 남기지 않고 HTML 엘리먼트(Element)들을 그룹화해줍니다.
 
 <DeepDive title="왜 두 개 이상의 JSX 태그는 감싸져야 하나요?">
 
@@ -171,11 +171,11 @@ Hedy Lamarr 이미지 태그와 리스트 태그들은 이렇게 닫혀있어야
 </>
 ```
 
-### 3. <s>모든</s> 대부분의 것을 카멜 표기법(camelCase)으로 작성하세요! {/*3-camelcase-salls-most-of-the-things*/}
+### 3. <s>모든</s> 대부분의 것을 카멜 케이스(camelCase)으로 작성하세요! {/*3-camelcase-salls-most-of-the-things*/}
 
-JSX가 자바스크립트(JavaScript)로 바뀌고 JSX에 있던 속성(attribute)들은 자바스크립트 객체(object)의 키가 됩니다. 여러분의 컴포넌트에서 속성들을 변수처럼 읽어드릴 일이 많을 겁니다. 하지만 자바스크립트(JavaScript)는 변수명에 제약이 있습니다. 예를 들어 변수명은 대시('-')를  포함할 수 없고 `class` 같은 단어는 가질 수 없습니다.
+JSX가 자바스크립트(JavaScript)로 바뀌고 JSX에 있던 어트리뷰트(attribute)들은 자바스크립트 객체(object)의 키가 됩니다. 여러분의 컴포넌트에서 어트리뷰트(attribute)들을 변수처럼 읽어드릴 일이 많을 겁니다. 하지만 자바스크립트(JavaScript)는 변수명에 제약이 있습니다. 예를 들어 변수명은 대시('-')를  포함할 수 없고 `class` 같은 단어는 가질 수 없습니다.
 
-이것이 React의 많은 HTML과 SVG 속성(attribute)이 카멜 표기법(camelCase)으로 쓰인 이유입니다. 예를 들어서 `stroke-width` 대신에 `strokeWidth`를 사용합니다. `class`는 예약어(reserved word)이기 때문에 React에서는  [해당되는 DOM 속성(property)](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)의 이름을 따서 `className`으로 대신 작성합니다:
+이것이 React의 많은 HTML과 SVG 어트리뷰트(attribute)가 카멜 케이스(camelCase)로 쓰인 이유입니다. 예를 들어서 `stroke-width` 대신에 `strokeWidth`를 사용합니다. `class`는 예약어(reserved word)이기 때문에 React에서는  [해당되는 DOM 프로퍼티(property)](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)의 이름을 따서 `className`으로 대신 작성합니다:
 
 ```js {4}
 <img 
@@ -185,17 +185,17 @@ JSX가 자바스크립트(JavaScript)로 바뀌고 JSX에 있던 속성(attribut
 />
 ```
 
-여러분은 [React DOM 요소(Element)의 모든 속성을](TODO) 확인할 수 있습니다. 만에 하나 여러분이 잘못 작성했더라도 걱정하지 마세요-React가 [브라우저 콘솔](https://developer.mozilla.org/docs/Tools/Browser_Console)에 교정을 담은 메시지를 보여줄 겁니다.
+여러분은 [React DOM 엘리먼트(Element)의 모든 어트리뷰트(attribute)를](TODO) 확인할 수 있습니다. 만에 하나 여러분이 잘못 작성했더라도 걱정하지 마세요-React가 [브라우저 콘솔](https://developer.mozilla.org/docs/Tools/Browser_Console)에 교정을 담은 메시지를 보여줄 겁니다.
 
 <Gotcha>
 
-역사적인 이유로 HTML 내에서 [`aria-*`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) 와 [`data-*`](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes) 속성(attribute)들은 대시('-')와 함께 쓰여집니다.
+역사적인 이유로 HTML 내에서 [`aria-*`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) 와 [`data-*`](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes) 어트리뷰트(attribute)들은 대시('-')와 함께 쓰여집니다.
 
 </Gotcha>
 
 ### Pro-tip: JSX 변환 도구를 사용하세요 {/*pro-tip-use-a-jsx-converter*/}
 
-기존 마크업의 모든 속성(attribute)들을 변환하는 것은 지루한 작업이 될 수 있습니다! 기존 HTML, SVG를 JSX로 바꾸기 위해 [변환 도구](https://transform.tools/html-to-jsx) 사용을 추천합니다. 변환 도구는 실제로 꽤 유용하지만 그래도 여러분이 JSX를 문제없이 작성하기 위해서 JSX 뒤에 무슨 일이 일어나는지 이해하는 것은 가치 있는 일입니다.
+기존 마크업의 모든 어트리뷰트(attribute)들을 변환하는 것은 지루한 작업이 될 수 있습니다! 기존 HTML, SVG를 JSX로 바꾸기 위해 [변환 도구](https://transform.tools/html-to-jsx) 사용을 추천합니다. 변환 도구는 실제로 꽤 유용하지만 그래도 여러분이 JSX를 문제없이 작성하기 위해서 JSX 뒤에 무슨 일이 일어나는지 이해하는 것은 가치 있는 일입니다.
 
 이것이 여러분의 최종 결과물입니다:
 
